@@ -25,8 +25,7 @@ function Find(target, array){
     return false;
 }
 
-function Find1(target, array)
-{
+function Find1(target, array) {
     // write code here
     let colLength = array[0].length;
     let rowLength = array.length;
