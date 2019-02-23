@@ -62,6 +62,7 @@ function permutate(arr,index,res){
         return res.push(s);
     }else{
         for(var i=index;i<arr.length;i++){
+            // 如图 需要交换两次
             [arr[index],arr[i]]=[arr[i],arr[index]];
             permutate(arr,index+1,res);
             [arr[index],arr[i]]=[arr[i],arr[index]];
