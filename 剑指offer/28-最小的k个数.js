@@ -15,7 +15,7 @@ function quickSort(arr) {
     if (arr.length <= 1) {
         return arr;
     }
-    let base = arr.splice(0, 1)[0];
+    let base = arr.shift();
     let left = [];
     let right = [];
     for (let i = 0; i < arr.length; i++) {
@@ -28,7 +28,8 @@ function quickSort(arr) {
     }
     return quickSort(left).concat([base], quickSort(right))
 }
-
+let a = quickSort([1,4,3,6,7,6,9,1])
+console.log(a)
 // let result = GetLeastNumbers_Solution([4,5,1,6,2,7,3,8], 4)
 // console.log(result)
 // 冒泡
@@ -49,4 +50,4 @@ function bubbleSort(input, k) {
 }
 
 let result1 = bubbleSort([4,5,1,6,2,7,3,8], 4)
-console.log(result1)
+// console.log(result1)
