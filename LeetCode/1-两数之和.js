@@ -27,7 +27,18 @@ let twoSum = function(nums, target) {
     }
 }
 
+let twoSum1 = function(nums, target) {
+    let map = new Map();
+    for (let i = 0; i< nums.length; i++) {
+        let complement = target - nums[i];
+        if (map.has(complement)) {
+            return [i, map.get(complement)]
+        }
+        map.set(nums[i], i);
+    }
+}
+
 let nums = [2, 7, 11,15];
 let target = 9;
-let result = twoSum(nums, target);
+let result = twoSum1(nums, target);
 console.log(result)
