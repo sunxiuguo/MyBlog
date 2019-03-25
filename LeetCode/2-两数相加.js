@@ -10,6 +10,10 @@
 // 输出：7 -> 0 -> 8
 // 原因：342 + 465 = 807
 
+
+// 思路：
+// 因为链表中的数字是按照逆序存储, 两个链表数字的相加就相当于从最低位开始相加, 当前节点的和为 x+y+进位的值。
+
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -17,6 +21,33 @@
  *     this.next = null;
  * }
  */
+
+var addTwoNumbers1 = function(l1, l2) {
+    let dummyHead = new ListNode(0);
+    let p = l1, q = l2, curr = dummyHead;
+    let carry = 0; // 进位
+    while (p || q) {
+		// x = 7, y = 8
+		// sum = 15
+		// carry = 1
+		// curr.next的值为15%10 = 5（也可以是15-10=5，都一样，取个位数）
+        let x = p ? parseInt(p.val) : 0;
+        let y = q ? parseInt(q.val) : 0;
+        let sum = parseInt(carry + x + y);
+        carry = parseInt(sum / 10);
+        curr.next = new ListNode(sum % 10);
+        curr = curr.next;
+        
+        if (p) p = p.next;
+        if (q) q = q.next;
+    }
+    if (carry > 0) {
+        curr.next = new ListNode(carry);
+    }
+    return dummyHead.next;
+    
+};
+
 /**
  * @param {ListNode} l1
  * @param {ListNode} l2
@@ -50,26 +81,4 @@ var addTwoNumbers = function(l1, l2) {
       tempNode.next = new ListNode(1);
     }
     return resultList;
-};
-
-var addTwoNumbers1 = function(l1, l2) {
-    let dummyHead = new ListNode(0);
-    let p = l1, q = l2, curr = dummyHead;
-    let carry = 0;
-    while (p || q) {
-        let x = p ? parseInt(p.val) : 0;
-        let y = q ? parseInt(q.val) : 0;
-        let sum = parseInt(carry + x + y);
-        carry = parseInt(sum / 10);
-        curr.next = new ListNode(sum % 10);
-        curr = curr.next;
-        
-        if (p) p = p.next;
-        if (q) q = q.next;
-    }
-    if (carry > 0) {
-        curr.next = new ListNode(carry);
-    }
-    return dummyHead.next;
-    
 };
