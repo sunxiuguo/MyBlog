@@ -7,7 +7,7 @@ let context = { year, month, day };
 
 function render(template) {
     return function(context) {
-        return template.replace(/\$\{(.*?)\}/g, (match, key) => context[key]);
+        return template.replace(/\$\{(.*?)\}/g, (_, key) => context[key]);
     }
 }
 
